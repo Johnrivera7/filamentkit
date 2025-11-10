@@ -18,7 +18,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "awcodes/light-switch": "^2.0",
         "awcodes/overlook": "^3.0",
         "backstage/filament-mails": "^3.0",

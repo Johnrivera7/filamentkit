@@ -6,20 +6,22 @@ namespace App\Filament\Admin\Pages;
 
 use App\Filament\Admin\Widgets\LatestAccessLogs;
 use Awcodes\Overlook\Widgets\OverlookWidget;
+use BackedEnum;
 use Filafly\Icons\Phosphor\Enums\Phosphor;
 use Filament\Pages\Page;
+use UnitEnum;
 
 final class AdministrationOverview extends Page
 {
-    protected static ?string $navigationIcon = Phosphor::BriefcaseMetalDuotone;
+    protected static string|BackedEnum|null $navigationIcon = Phosphor::BriefcaseMetalDuotone;
 
-    protected static ?string $navigationGroup = 'Administration';
+    protected static string|UnitEnum|null $navigationGroup = 'Administration';
 
     protected static ?string $navigationLabel = 'Panel administrativo';
 
     protected static ?int $navigationSort = 1;
 
-    protected static string $view = 'filament.admin.pages.administration-overview';
+    protected string $view = 'filament.admin.pages.administration-overview';
 
     protected function getHeaderWidgets(): array
     {

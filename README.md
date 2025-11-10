@@ -73,7 +73,7 @@ impersonación, guardián de inactividad y comandos automatizados para preparar 
 
 | Versión del kit | Filament | PHP |
 | --------------- | -------- | --- |
-| 1.x             | 4.x      | >= 8.2 |
+| 1.x             | 4.x      | >= 8.3 |
 
 ---
 
