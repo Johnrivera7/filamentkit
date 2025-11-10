@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace App\Providers\Filament;
 
 use App\Filament\Admin\Resources\Users\UserResource;
-use App\Filament\Admin\Widgets\LatestAccessLogs;
 use App\Models\User;
 use Awcodes\LightSwitch\Enums\Alignment;
 use Awcodes\LightSwitch\LightSwitchPlugin;
 use Awcodes\Overlook\OverlookPlugin;
-use Awcodes\Overlook\Widgets\OverlookWidget;
 use Backstage\FilamentMails\Facades\FilamentMails;
 use Backstage\FilamentMails\FilamentMailsPlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
@@ -63,10 +61,6 @@ final class AdminPanelProvider extends PanelProvider
                 //
             ])
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\Filament\Admin\Widgets')
-            ->widgets([
-                OverlookWidget::class,
-                LatestAccessLogs::class,
-            ])
             ->routes(fn () => FilamentMails::routes())
             ->navigationGroups([
                 NavigationGroup::make()
