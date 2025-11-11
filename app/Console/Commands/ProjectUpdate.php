@@ -27,6 +27,8 @@ final class ProjectUpdate extends Command
      */
     public function handle(): void
     {
+        $this->ensureLogFileExists();
+
         $this->call('migrate');
         $this->call('shield:generate', [
             '--all' => true,
@@ -36,5 +38,18 @@ final class ProjectUpdate extends Command
         ]);
         $this->call('filament:optimize-clear');
         $this->call('optimize:clear');
+    }
+
+    private function ensureLogFileExists(): void
+    {
+        $logFile = storage_path('logs/laravel.log');
+
+        if (! is_dir(dirname($logFile))) {
+            mkdir(dirname($logFile), 0755, true);
+        }
+
+        if (! file_exists($logFile)) {
+            file_put_contents($logFile, '');
+        }
     }
 }

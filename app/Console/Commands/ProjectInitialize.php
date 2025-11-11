@@ -27,6 +27,8 @@ final class ProjectInitialize extends Command
      */
     public function handle(): void
     {
+        $this->ensureLogFileExists();
+
         $this->call('migrate:fresh', [
             '--force' => true,
         ]);
@@ -45,5 +47,18 @@ final class ProjectInitialize extends Command
 
         $this->call('filament:optimize-clear');
         $this->call('optimize:clear');
+    }
+
+    private function ensureLogFileExists(): void
+    {
+        $logFile = storage_path('logs/laravel.log');
+
+        if (! is_dir(dirname($logFile))) {
+            mkdir(dirname($logFile), 0755, true);
+        }
+
+        if (! file_exists($logFile)) {
+            file_put_contents($logFile, '');
+        }
     }
 }

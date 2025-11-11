@@ -1,8 +1,4 @@
-@extends('filament-panels::page')
-
-@section('title', 'Panel administrativo')
-
-@section('content')
+<x-filament-panels::page>
     <x-filament::section>
         <x-slot name="heading">
             Administración y monitoreo
@@ -12,6 +8,5 @@
             Supervisa métricas clave de usuarios y revisa los registros de accesos recientes desde un único lugar.
         </p>
     </x-filament::section>
-@endsection
-
+</x-filament-panels::page>
 
