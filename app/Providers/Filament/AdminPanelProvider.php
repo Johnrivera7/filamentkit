@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use App\Filament\Admin\Pages\AdministrationOverview;
 use App\Filament\Admin\Resources\Users\UserResource;
 use App\Models\User;
+use Alizharb\FilamentThemesManager\FilamentThemesManagerPlugin;
 use Awcodes\LightSwitch\Enums\Alignment;
 use Awcodes\LightSwitch\LightSwitchPlugin;
 use Awcodes\Overlook\OverlookPlugin;
@@ -58,7 +60,7 @@ final class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\Filament\Admin\Resources')
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\Filament\Admin\Pages')
             ->pages([
-                //
+                AdministrationOverview::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\Filament\Admin\Widgets')
             ->routes(fn () => FilamentMails::routes())
@@ -152,6 +154,7 @@ final class AdminPanelProvider extends PanelProvider
                     ->registration(false),
                 FilamentMailsPlugin::make()
                     ->canManageMails(fn () => auth()->user()?->can('manage mails') ?? false),
+                FilamentThemesManagerPlugin::make(),
             ])
             ->resources([
                 config('filament-logger.activity_resource'),

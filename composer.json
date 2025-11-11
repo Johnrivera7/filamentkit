@@ -9,7 +9,8 @@
         "filament",
         "starter kit",
         "social login",
-        "mail observability"
+        "mail observability",
+        "theme management"
     ],
     "license": "MIT",
     "authors": [
@@ -19,6 +20,7 @@
     ],
     "require": {
         "php": "^8.3",
+        "alizharb/filament-themes-manager": "^1.0",
         "awcodes/light-switch": "^2.0",
         "awcodes/overlook": "^3.0",
         "backstage/filament-mails": "^3.0",
@@ -38,6 +40,7 @@
         "livewire/livewire": "^3.6",
         "marcelweidum/filament-expiration-notice": "^1.0",
         "pxlrbt/filament-excel": "^3.2",
+        "qirolab/laravel-themer": "^2.4",
         "socialiteproviders/microsoft": "*",
         "stechstudio/filament-impersonate": "*",
         "unknow-sk/filament-logger": "^1.0"
