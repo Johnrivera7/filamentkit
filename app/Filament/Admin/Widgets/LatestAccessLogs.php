@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Admin\Widgets;
 
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
+use Filament\Facades\Filament;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -16,9 +17,24 @@ final class LatestAccessLogs extends BaseWidget
 {
     use HasWidgetShield;
 
+    protected static bool $isDiscovered = false;
+
     protected static ?int $sort = 100;
 
     protected int|string|array $columnSpan = 2;
+
+    public static function canView(): bool
+    {
+        $permission = static::getWidgetPermission();
+
+        if ($permission) {
+            $user = Filament::auth()?->user();
+
+            return $user ? $user->can($permission) : false;
+        }
+
+        return parent::canView();
+    }
 
     public function table(Table $table): Table
     {
