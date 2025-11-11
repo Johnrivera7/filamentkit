@@ -7,7 +7,6 @@ namespace App\Providers\Filament;
 use App\Filament\Admin\Pages\AdministrationOverview;
 use App\Filament\Admin\Resources\Users\UserResource;
 use App\Models\User;
-use Alizharb\FilamentThemesManager\FilamentThemesManagerPlugin;
 use Awcodes\LightSwitch\Enums\Alignment;
 use Awcodes\LightSwitch\LightSwitchPlugin;
 use Awcodes\Overlook\OverlookPlugin;
@@ -154,7 +153,6 @@ final class AdminPanelProvider extends PanelProvider
                     ->registration(false),
                 FilamentMailsPlugin::make()
                     ->canManageMails(fn () => auth()->user()?->can('manage mails') ?? false),
-                FilamentThemesManagerPlugin::make(),
             ])
             ->resources([
                 config('filament-logger.activity_resource'),

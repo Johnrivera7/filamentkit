@@ -11,7 +11,7 @@ use Filament\Pages\Page;
 use Filament\Support\Enums\Alignment;
 use Filament\Support\Enums\VerticalAlignment;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades.Event;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\ValidationException;

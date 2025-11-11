@@ -31,7 +31,6 @@ impersonación, guardián de inactividad y comandos automatizados para preparar 
 | 📈 Observabilidad | Panel administrativo con métricas y bitácora de accesos, log viewer y mails monitor. |
 | 📊 Analítica | Widgets listos para Apex Charts y exportación masiva a Excel. |
 | 💤 Inactividad | Guardián que cierra sesiones ociosas con aviso configurable. |
-| 🎭 Temas | Gestor de temas con vistas previas, clonación y protección de temas base. |
 | ⚙️ Automatización | Comandos `php artisan project:*` para inicializar, actualizar y optimizar el kit. |
 
 ---
@@ -41,7 +40,7 @@ impersonación, guardián de inactividad y comandos automatizados para preparar 
 <details>
 <summary><strong>🎛️ Experiencia de panel</strong></summary>
 
-`filafly/brisk`, `filafly/filament-phosphor-icons`, `awcodes/light-switch`, `awcodes/overlook`, `diogogpinto/filament-auth-ui-enhancer`, `jeffgreco13/filament-breezy`, `dutchcodingcompany/filament-developer-logins`, `alizharb/filament-themes-manager`
+`filafly/brisk`, `filafly/filament-phosphor-icons`, `awcodes/light-switch`, `awcodes/overlook`, `diogogpinto/filament-auth-ui-enhancer`, `jeffgreco13/filament-breezy`, `dutchcodingcompany/filament-developer-logins`
 </details>
 
 <details>
@@ -53,13 +52,13 @@ impersonación, guardián de inactividad y comandos automatizados para preparar 
 <details>
 <summary><strong>⚙️ Productividad y operatividad</strong></summary>
 
-`eightcedars/filament-inactivity-guard`, `pxlrbt/filament-excel`, `qirolab/laravel-themer`
+`eightcedars/filament-inactivity-guard`, `pxlrbt/filament-excel`
 </details>
 
 <details>
 <summary><strong>🔌 Integraciones</strong></summary>
 
-`dutchcodingcompany/filament-socialite`, `socialiteproviders/microsoft`, `backstage/filament-mails`, `marcelweidum/filament-expiration-notice`, `leandrocfe/filament-apex-charts`, `alizharb/filament-themes-manager`
+`dutchcodingcompany/filament-socialite`, `socialiteproviders/microsoft`, `backstage/filament-mails`, `marcelweidum/filament-expiration-notice`, `leandrocfe/filament-apex-charts`
 </details>
 
 <details>
@@ -83,27 +82,27 @@ impersonación, guardián de inactividad y comandos automatizados para preparar 
 > Sigue cada paso en orden; los comandos resaltados son **obligatorios** para que Shield genere navegación y permisos correctamente.
 
 1. **Crear el proyecto**
-   ```bash
-   composer create-project --prefer-dist jrivera/filamentkit nombre-del-proyecto
-   cd nombre-del-proyecto
-   ```
+    ```bash
+    composer create-project --prefer-dist jrivera/filamentkit nombre-del-proyecto
+    cd nombre-del-proyecto
+    ```
 
 2. **Configurar variables**
-   ```dotenv
+        ```dotenv
    cp .env.example .env
    APP_URL=https://tu-dominio.test
 
-   GITHUB_CLIENT_ID=...
-   GITHUB_CLIENT_SECRET=...
-   GITHUB_REDIRECT_URI="${APP_URL}/admin/oauth/callback/github"
+        GITHUB_CLIENT_ID=...
+        GITHUB_CLIENT_SECRET=...
+        GITHUB_REDIRECT_URI="${APP_URL}/admin/oauth/callback/github"
 
-   GOOGLE_CLIENT_ID=...
-   GOOGLE_CLIENT_SECRET=...
-   GOOGLE_REDIRECT_URI="${APP_URL}/admin/oauth/callback/google"
+        GOOGLE_CLIENT_ID=...
+        GOOGLE_CLIENT_SECRET=...
+        GOOGLE_REDIRECT_URI="${APP_URL}/admin/oauth/callback/google"
 
-   MICROSOFT_CLIENT_ID=...
-   MICROSOFT_CLIENT_SECRET=...
-   MICROSOFT_REDIRECT_URI="${APP_URL}/admin/oauth/callback/microsoft"
+        MICROSOFT_CLIENT_ID=...
+        MICROSOFT_CLIENT_SECRET=...
+        MICROSOFT_REDIRECT_URI="${APP_URL}/admin/oauth/callback/microsoft"
    MICROSOFT_TENANT=common
 
    MAIL_MAILER=smtp
@@ -113,13 +112,13 @@ impersonación, guardián de inactividad y comandos automatizados para preparar 
    ```
 
 3. **Preparar dependencias y assets**
-   ```bash
+    ```bash
    composer install           # por si agregas dependencias extra
-   bun install && bun run build
-   ```
+    bun install && bun run build
+    ```
 
 4. **Inicializar la aplicación (orden recomendado)**
-   ```bash
+    ```bash
    php artisan key:generate
    php artisan storage:link
    php artisan project:init   # migra en limpio, crea roles base y asigna super admin
@@ -134,7 +133,6 @@ impersonación, guardián de inactividad y comandos automatizados para preparar 
 
 6. **Checklist post-despliegue**
    - Revisar `config/filament-inactivity-guard.php` según políticas de sesión.
-   - Ajustar `config/filament-themes-manager.php` (grupo de navegación, rutas de descubrimiento, protección de temas).
    - Crear tu usuario administrador y otorgarle el rol `super_admin`.
    - Verificar que el nuevo **Panel administrativo** (menú Administración) muestre métricas y registros.
 
@@ -146,7 +144,6 @@ impersonación, guardián de inactividad y comandos automatizados para preparar 
 - **Panel administrativo**: nueva página que agrupa Overlook (estadísticas de usuarios) y la tabla de accesos recientes.
 - **Roles & Permissions**: expuesto vía Filament Shield listo para administrar el RBAC.
 - **Filament Mails**: monitor de envíos, eventos y reenvíos desde el mismo panel.
-- **Theme Manager**: interfaz para instalar, clonar, previsualizar y activar temas sin salir del panel.
 
 ---
 
@@ -154,7 +151,6 @@ impersonación, guardián de inactividad y comandos automatizados para preparar 
 
 - **Socialite extendido** – GitHub, Google y Microsoft listos; agrega dominios permitidos desde `FilamentSocialitePlugin::authorizeUserUsing`.
 - **Filament Mails** – Ejecuta `php artisan vendor:publish --tag="filament-mails-config"` si necesitas personalizar recursos o rutas.
-- **Themes Manager** – Configura navegación y widgets desde `config/filament-themes-manager.php`; habilita previsualización con el middleware opcional en `bootstrap/app.php`.
 - **Excel & Exportaciones** – Acción masiva disponible en `UserResource`; puedes añadirla a cualquier tabla con una sola línea.
 - **Inactivity Guard** – Valor por defecto: 15 min de inactividad + 60 s de alerta antes del logout. Personaliza en `config/filament-inactivity-guard.php`.
 
@@ -170,7 +166,6 @@ impersonación, guardián de inactividad y comandos automatizados para preparar 
 | `php artisan shield:generate --all` | Tras cambios puntuales en recursos sin usar `project:update` | Regenera políticas y permisos detectados. |
 | `php artisan project:cache` / `project:recache` | Cambios en config/env antes de producción | Limpia y vuelve a generar caches de config, rutas y vistas. |
 | `php artisan dev:init` | Cada vez que quieras refrescar helpers IDE o Pint | Ejecuta IDE Helper, Debugbar y demás utilidades de desarrollo. |
-| `php artisan theme:*` | Instalar, clonar o previsualizar temas (ZIP, GitHub o locales) | Comandos provistos por `filament-themes-manager` para administrar temas. |
 
 > 💡 Sugerencia: crea scripts en tu CI/CD que corran `project:init` y `project:cache` para mantener los ambientes sincronizados.
 
